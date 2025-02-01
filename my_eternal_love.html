@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Eternal Love for Dristy 🌻</title>
+    <style>
+        body {
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background-image: url('https://images.unsplash.com/photo-1597848212624-a19eb35e2651?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80');
+            background-size: cover;
+            background-position: center;
+            font-family: 'Georgia', serif;
+            color: #5a2d0c;
+        }
+
+        .overlay {
+            background: rgba(255, 255, 255, 0.8);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            max-width: 600px;
+            text-align: center;
+            margin: 20px;
+        }
+
+        .love-note {
+            font-size: 1.4em;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+
+        .timer-btn {
+            background: #ff4d4d;
+            color: white;
+            border: none;
+            padding: 20px 30px;
+            border-radius: 50px;
+            font-size: 1.5em;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255, 77, 77, 0.3);
+        }
+
+        .timer-btn:hover {
+            transform: scale(1.1);
+        }
+
+        .timer {
+            font-family: monospace;
+            font-size: 1.2em;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        .pulse {
+            animation: pulse 1.5s infinite;
+        }
+    </style>
+</head>
+<body>
+    <div class="overlay">
+        <div class="love-note">
+            "Dristy my bibi, in your eyes, I found my forever sky—endless and breathtaking. Your smile is my favorite sunrise, warming every corner of my soul. With you, every heartbeat feels like a whispered promise: I’ll always choose you, again and again. 🌙💖
+- Your Handsome Husband, Sajid"
+        </div>
+        <button class="timer-btn" onclick="startTimer()" id="timerButton">
+            ❤️ Tap here to see for how long I'm tolerating you with love
+        </button>
+    </div>
+
+    <script>
+        const startDate = new Date('2023-07-20T12:00:00');
+        let timerInterval;
+
+        function startTimer() {
+            const button = document.getElementById('timerButton');
+            button.classList.add('pulse');
+            button.innerHTML = '❤️ Our Loving Timeline ❤️<br><span class="timer" id="timer"></span>';
+            
+            function updateTimer() {
+                const now = new Date();
+                const diff = now - startDate;
+                
+                const years = Math.floor(diff / (1000 * 60 * 60 * 24 * 365));
+                const months = Math.floor((diff % (1000 * 60 * 60 * 24 * 365)) / (1000 * 60 * 60 * 24 * 30));
+                const days = Math.floor((diff % (1000 * 60 * 60 * 24 * 30)) / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+                document.getElementById('timer').innerHTML = 
+                    `${years} Years ${months} Months ${days} Days<br>` +
+                    `${hours.toString().padStart(2, '0')}:` +
+                    `${minutes.toString().padStart(2, '0')}:` +
+                    `${seconds.toString().padStart(2, '0')}`;
+            }
+
+            updateTimer();
+            timerInterval = setInterval(updateTimer, 1000);
+        }
+    </script>
+</body>
+</html>
